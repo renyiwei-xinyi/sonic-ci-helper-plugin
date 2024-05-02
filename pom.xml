@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.4</version>
+        <version>4.79</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.plugins</groupId>
@@ -12,7 +12,7 @@
     <version>1.0.6-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <properties>
-        <jenkins.version>2.289.3</jenkins.version>
+        <jenkins.version>2.361</jenkins.version>
         <java.level>8</java.level>
         <plugin.minimumJavaVersion>8</plugin.minimumJavaVersion>
         <hpi.compatibleSinceVersion>2.0.0</hpi.compatibleSinceVersion>
@@ -25,30 +25,57 @@
         </license>
     </licenses>
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.github.yaming116</groupId>-->
+<!--            <artifactId>okhttps</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.github.yaming116.okhttps</groupId>-->
+<!--                    <artifactId>okhttps-test</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.github.yaming116</groupId>
+            <groupId>com.ejlchina</groupId>
             <artifactId>okhttps</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.yaming116.okhttps</groupId>
-                    <artifactId>okhttps-test</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>3.5.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.2</version> <!-- 使用最新版本 -->
+        </dependency>
+
+
+        <!--        <dependency>-->
+<!--            <groupId>com.squareup.okhttp3</groupId>-->
+<!--            <artifactId>okhttp</artifactId>-->
+<!--            <version>3.14.9</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.realityforge.org.jetbrains.annotations/org.jetbrains.annotations -->
+        <dependency>
+            <groupId>org.realityforge.org.jetbrains.annotations</groupId>
+            <artifactId>org.jetbrains.annotations</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/io.jenkins.tools.bom/bom-2.426.x -->
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.319.x</artifactId>
-                <version>1607.va_c1576527071</version>
+                <artifactId>bom-2.426.x</artifactId>
+                <version>2884.vc36b_64ce114a_</version>
                 <type>pom</type>
             </dependency>
-            <dependency>
-                <groupId>com.github.yaming116</groupId>
-                <artifactId>okhttps</artifactId>
-                <version>3.5.3</version>
-            </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>com.github.yaming116</groupId>-->
+<!--                <artifactId>okhttps</artifactId>-->
+<!--                <version>3.5.3</version>-->
+<!--            </dependency>-->
 
         </dependencies>
     </dependencyManagement>

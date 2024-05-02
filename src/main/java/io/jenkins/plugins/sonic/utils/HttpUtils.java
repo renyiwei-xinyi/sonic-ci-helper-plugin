@@ -18,7 +18,7 @@ package io.jenkins.plugins.sonic.utils;
 
 import com.ejlchina.data.TypeRef;
 import com.ejlchina.okhttps.*;
-import com.ejlchina.okhttps.gson.GsonMsgConvertor;
+//import com.ejlchina.okhttps.gson.GsonMsgConvertor;
 import hudson.EnvVars;
 import hudson.FilePath;
 import hudson.model.Run;
@@ -63,7 +63,7 @@ public class HttpUtils {
                 // 读取超时时间10分钟
                 builder.readTimeout(10, TimeUnit.MINUTES);
             })
-            .addMsgConvertor(new GsonMsgConvertor())
+//            .addMsgConvertor(new GsonMsgConvertor())
             .build();
 
 
@@ -329,10 +329,17 @@ public class HttpUtils {
             return 0;
         });
 
-        String uploadFiltPath = strings.get(0).getRemote();
+        int index = 0;
+        for (int i = 0; i < strings.size(); i++) {
+            if (strings.get(i).getRemote().contains("Signed")) {
+                index = i;
+            }
+        }
+
+        String uploadFiltPath = strings.get(index).getRemote();
         Logging.logging(listener, "Found " + uploadFiles.length + " files, the default choice of the latest modified file!");
         Logging.logging(listener, "The latest modified file is " + uploadFiltPath);
-        return strings.get(0);
+        return strings.get(index);
     }
 
 
