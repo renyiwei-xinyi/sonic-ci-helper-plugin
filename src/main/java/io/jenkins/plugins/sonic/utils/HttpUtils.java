@@ -63,7 +63,7 @@ public class HttpUtils {
                 // 读取超时时间10分钟
                 builder.readTimeout(10, TimeUnit.MINUTES);
             })
-//            .addMsgConvertor(new GsonMsgConvertor())
+            .addMsgConvertor(new GsonMsgConvertor())
             .build();
 
 
