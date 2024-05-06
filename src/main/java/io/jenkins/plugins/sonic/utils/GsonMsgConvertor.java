@@ -48,7 +48,10 @@ public class GsonMsgConvertor implements MsgConvertor {
 
     @Override
     public byte[] serialize(Object o, Charset charset) {
-        return new byte[0];
+        // 首先，使用Gson将对象转换为JSON字符串
+        String json = gson.toJson(o);
+        // 然后，将JSON字符串转换为字节数组，使用指定的字符集进行编码
+        return json.getBytes(charset);
     }
 
     @Override
