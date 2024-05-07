@@ -125,9 +125,7 @@ public class HttpUtils {
     }
 
     private static String uploadAction(Run<?, ?> build, FilePath uploadFile, hudson.model.TaskListener listener, ParamBean paramBean) {
-        AHttpTask aHttpTask = buildHttp(paramBean, UPLOAD_URL);
-        Logging.logging(listener, aHttpTask.getUrl());
-        HttpCall call = aHttpTask
+        HttpCall call = buildHttp(paramBean, UPLOAD_URL)
                 .setBodyPara(buildFilePart(uploadFile))
                 .stepRate(0.05)    // 设置每发送 1% 执行一次进度回调（不设置以 StepBytes 为准）
                 .setOnProcess(process ->
@@ -138,7 +136,6 @@ public class HttpUtils {
                 })
                 .post();
 
-        Logging.logging(listener, call.getResult().getBody().toString());
         if (call.getResult().isSuccessful()) {
             HttpResult<String> httpResult = call.getResult().getBody().toBean(new TypeRef<HttpResult<String>>() {
                 @Override
